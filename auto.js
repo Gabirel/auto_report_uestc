@@ -6,7 +6,7 @@ function click_from_bounds(bound) {
 
 function generate_random_tempature() {
     var min = 36.2,
-        max = 36.8,
+        max = 37.0,
         result = Math.random() * (max - min) + min;
     result = result.toFixed(1)
     return result;
