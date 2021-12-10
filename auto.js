@@ -60,6 +60,7 @@ function report_tempature() {
 
 function report_safety() {
     // click 报平安
+    id("")
     sleep(500)
     click(140, 1853)
 
@@ -127,7 +128,7 @@ function main() {
     click_from_bounds(current_button.bounds())
 
     var eportal = "研究生健康状况填报";
-    current_button = text(eportal).findOne(3000);
+    current_button = textContains(eportal).findOne(3000);
     if (current_button == null) {
         toastLog("not found: " + eportal);
         exit(1);
@@ -135,14 +136,13 @@ function main() {
     click_from_bounds(current_button.bounds());
 
     toastLog("5s内未出界面，请重新刷新。否则按音量健停止脚本");
-    sleep(5000);
+    text("每日报平安").waitFor();
     toastLog("开始上报安全");
-    sleep(2000);
     report_safety();
 
-    toastLog("开始上报体温");
-    sleep(1000);
-    report_tempature();
+    // toastLog("开始上报体温");
+    // sleep(1000);
+    // report_tempature();
 
     // click twice to exit official account
     for (let i = 0; i < 2; i++) {
