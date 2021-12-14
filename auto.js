@@ -60,25 +60,28 @@ function report_tempature() {
 
 function report_safety() {
     // click 报平安
-    id("")
-    sleep(500)
-    click(140, 1853)
+    // 当前版本不需要点击
+    // id("")
+    // sleep(500)
+    // click(140, 1853)
 
     // click + 号
     sleep(2000);
     click(950, 1720);
     toastLog("+ is clicked")
 
-    sleep(1000);
-    for (let i = 0; i < 3; i++) {
+    textContains("每日报平安").waitFor();
+    sleep(2000);
+    for (let i = 0; i < 5; i++) {
         swipe(500, 1640, 500, 200, 500);
     }
-    // confirm
-    sleep(2000)
+
+    console.log("confirm clicked");
     click(500, 1730);
 
     // final confirm
-    sleep(2000);
+    console.log("等待确认");
+    text("确定").waitFor();
     click(700, 1145);
 }
 
@@ -135,11 +138,12 @@ function main() {
     }
     click_from_bounds(current_button.bounds());
 
-    toastLog("5s内未出界面，请重新刷新。否则按音量健停止脚本");
+    toastLog("可按音量键停止脚本！等待匹配中");
     text("每日报平安").waitFor();
     toastLog("开始上报安全");
     report_safety();
 
+    // 当前版本不需要再上报体温
     // toastLog("开始上报体温");
     // sleep(1000);
     // report_tempature();
