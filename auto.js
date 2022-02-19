@@ -70,8 +70,8 @@ function report_safety() {
     click(950, 1720);
     toastLog("+ is clicked")
 
-    textContains("每日报平安").waitFor();
-    sleep(2000);
+    // wait for loading due to occasionally bad network
+    sleep(2500);
     for (let i = 0; i < 5; i++) {
         swipe(500, 1640, 500, 200, 500);
     }
@@ -81,7 +81,7 @@ function report_safety() {
 
     // final confirm
     console.log("等待确认");
-    text("确定").waitFor();
+    sleep(1000);
     click(700, 1145);
 }
 
@@ -138,9 +138,14 @@ function main() {
     }
     click_from_bounds(current_button.bounds());
 
-    toastLog("可按音量键停止脚本！等待匹配中");
-    text("每日报平安").waitFor();
-    toastLog("开始上报安全");
+    toastLog("可按上音量键停止脚本！等待匹配中");
+
+
+    // does not work for latest wechat anymore
+    // text("正常").waitFor();
+
+    // therefore, using sleep is the best way to wait for it
+    sleep(2000);
     report_safety();
 
     // 当前版本不需要再上报体温
