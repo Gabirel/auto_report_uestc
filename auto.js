@@ -145,7 +145,7 @@ function main() {
     // text("正常").waitFor();
 
     // therefore, using sleep is the best way to wait for it
-    sleep(2000);
+    sleep(3000);
     report_safety();
 
     // 当前版本不需要再上报体温
